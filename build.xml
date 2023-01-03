@@ -22,7 +22,7 @@
     <target name="docs" depends="compile">
         <echo message="Processing"/>
         <javadoc packagenames="src" sourcepath="src/main/java" destdir="docs">
-            <fileset dir="src">
+            <fileset dir="src/main/java">
                 <include name="*" />
             </fileset>
         </javadoc>
