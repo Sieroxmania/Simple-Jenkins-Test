@@ -1,6 +1,6 @@
 <project name="Hello_World" basedir="." default="main">
 
-    <property name="sourceDir" value="src"/>
+    <property name="sourceDir" value="src/main/java"/>
     <property name="buildDir" value="build"/>
 
     <property name="classesDir" value="${buildDir}/classes"/>
