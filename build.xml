@@ -1,0 +1,48 @@
+<project name="Hello_World" basedir="." default="main">
+
+    <property name="sourceDir" value="src"/>
+    <property name="buildDir" value="build"/>
+
+    <property name="classesDir" value="${buildDir}/classes"/>
+    <property name="jarDir" value="${buildDir}/jar"/>
+    <property name="docsDir" value="docs"/>
+
+    <target name="clean">
+        <echo message="Cleaning"/>
+        <delete dir="${buildDir}"/>
+        <delete dir="${docsDir}"/>
+    </target>
+
+    <target name="compile">
+        <echo message="Compiling"/>
+        <mkdir dir="${classesDir}"/>
+        <javac srcdir="${sourceDir}" destdir="${classesDir}"/>
+    </target>
+
+    <target name="docs" depends="compile">
+        <echo message="Processing"/>
+        <javadoc packagenames="src" sourcepath="src" destdir="docs">
+            <fileset dir="src">
+                <include name="*" />
+            </fileset>
+        </javadoc>
+    </target>
+
+    <target name="jar" depends="docs">
+        <echo message="Building"/>
+        <mkdir dir="${jarDir}"/>
+        <jar destfile="${jarDir}/${ant.project.name}.jar" basedir="${classesDir}">
+            <manifest>
+                <attribute name="Main-Class" value="HelloWorld"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar">
+        <echo message="Running"/>
+        <java jar="${jarDir}/${ant.project.name}.jar" fork="true"/>
+    </target>
+
+    <target name="main" depends="clean,run"/>
+
+</project>
