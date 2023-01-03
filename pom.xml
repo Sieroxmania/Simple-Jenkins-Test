@@ -7,4 +7,13 @@
   <artifactId>hello-world</artifactId>
   <version>1</version>
   <name>hello-world</name>
+
+   <build>
+   <resources>
+     <resource>
+       <directory>src/</directory>
+     </resource>
+   </resources>
+ </build>
 </project>
+
